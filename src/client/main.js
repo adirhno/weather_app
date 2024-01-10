@@ -2,9 +2,8 @@
 
 const Render = new Renderer();
 
-const getDataFromDb = async function () {
-  const data = await $.get(`http://localhost:3000/cities`);
-  return data;
+const getDataFromDb = function () {
+  return $.get(`http://localhost:3000/cities`);
 };
 
 const render = async function () {
