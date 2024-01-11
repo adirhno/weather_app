@@ -27,7 +27,7 @@ $("#container").on("click", "#addCity", async function () {
 $("#container").on("click", ".btn-close", function () {
   const cityName = $(this).parent().find("span")[0].innerHTML;
   $.ajax({
-    url: `https://weather-app-px36.onrender.com/${cityName}`,
+    url: `https://weather-app-px36.onrender.com/cities/${cityName}`,
     type: "delete",
     success: function () {
       render();
