@@ -8,6 +8,7 @@ const axios = require("axios");
 const Utilites = require("./Utilites");
 const path = require("path");
 const City = require("../../models/City");
+const api=require('../routes/api')
 
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/weather", { useNewUrlParser: true })
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 app.use(express.static(path.join(__dirname, "../node_modules")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/cities',api)
 
 app.get("/cities/:cityName?", async function (req, res) {
   if (req.params.cityName) {
