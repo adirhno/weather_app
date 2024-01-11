@@ -3,7 +3,7 @@
 const Render = new Renderer();
 
 const getDataFromDb = function () {
-  return $.get(`http://localhost:3000/cities`);
+  return $.get(`https://weather-app-px36.onrender.com/cities`);
 };
 
 const render = async function () {
@@ -12,22 +12,22 @@ const render = async function () {
 
 $("#searchCityName").on("click", async function () {
   const cityName = $("#searchInput").val();
-  const data = await $.get(`http://localhost:3000/cities/${cityName}`);
+  const data = await $.get(`https://weather-app-px36.onrender.com/cities/${cityName}`);
   Render.renderWithAppend([data]);
 });
 
 $("#container").on("click", "#addCity", async function () {
   const cityName = $(this).parent().find("span")[0].innerHTML;
-  const data = await $.get(`http://localhost:3000/cities/${cityName}`);
+  const data = await $.get(`https://weather-app-px36.onrender.com/cities/${cityName}`);
   data["active"] = false;
-  await $.post("http://localhost:3000/weather/", data);
+  await $.post("https://weather-app-px36.onrender.com/weather/", data);
   render();
 });
 
 $("#container").on("click", ".btn-close", function () {
   const cityName = $(this).parent().find("span")[0].innerHTML;
   $.ajax({
-    url: `http://localhost:3000/cities/${cityName}`,
+    url: `https://weather-app-px36.onrender.com/${cityName}`,
     type: "delete",
     success: function () {
       render();
